@@ -8,10 +8,11 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-            - name: Checkout repository
-                uses: actions/checkout@v2
+        # Check out and get latest version of repo
+          - name: Checkout repository
+            uses: actions/checkout@v3
 
-            - name: Set up Azure CLI
-                uses: azure/login@v1
-                with:
-                    creds: ${{ secrets.AZURECRIDENTIALS }}
+          - name: Set up Azure CLI
+            uses: azure/login@v1
+            with:
+                creds: ${{ secrets.AZURECRIDENTIALS }}
