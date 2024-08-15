@@ -8,7 +8,10 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-        # Check out and get latest version of repo
+          - uses: azure/login@v2
+            with:
+              creds: '{"clientId":"${{ secrets.AZURE_CREDENTIALS_CLIENTID }}","clientSecret":"${{ secrets.AZURE_CREDENTIALS_CLIENT_SECRET }}","subscriptionId":"${{ secrets.AZURE_CREDENTIALS_CLIENT_SUBSCRIPTIONID }}","tenantId":"${{ secrets.AZURE_CREDENTIALS_CLIENT_TENANTID }}"}'
+          
           - name: Checkout repository
             uses: actions/checkout@v3
 
