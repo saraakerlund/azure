@@ -9,6 +9,9 @@ jobs:
 
         
         steps:
+          - name: Checkout repository
+            uses: actions/checkout@v3
+        
           - name: Set up Node.js
             uses: actions/setup-node@v2
             with:
@@ -19,9 +22,6 @@ jobs:
 
           - name: Build project
             run: npm run build
-
-          - name: Checkout repository
-            uses: actions/checkout@v3
 
           - name: Azure Login action
             uses: azure/login@v2
