@@ -7,7 +7,19 @@ jobs:
     upload:
         runs-on: ubuntu-latest
 
+        
         steps:
+          - name: Set up Node.js
+            uses: actions/setup-node@v2
+            with:
+              node-version: '14'
+
+          - name: Install dependencies
+            run: npm install
+
+          - name: Build project
+            run: npm run build
+
           - name: Checkout repository
             uses: actions/checkout@v3
 
@@ -19,5 +31,5 @@ jobs:
 
           - name: Upload file to Azure Storage
             run: |
-                az storage blob upload --account-name sarasstorage --container-name cds --name test.html --file test.html --auth-mode login --overwrite
+                az storage blob upload --account-name sarasstorage --container-name cds --name test.html --file src/index.js --auth-mode login --overwrite
   
