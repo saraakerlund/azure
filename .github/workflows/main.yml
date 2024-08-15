@@ -19,5 +19,5 @@ jobs:
 
           - name: Upload file to Azure Storage
             run: |
-                az storage blob upload --account-name sarasstorage --container-name cdn --name test.html --file test.html --auth-mode login
+                az storage blob upload --account-name sarasstorage --container-name cds --name test.html --file test.html --auth-mode login
   
