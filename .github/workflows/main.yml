@@ -8,11 +8,16 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-        # Check out and get latest version of repo
           - name: Checkout repository
             uses: actions/checkout@v3
 
-          - name: Set up Azure CLI
+          - name: Azure Login action
             uses: azure/login@v2
             with:
-                creds: ${{ secrets.AZURE_CREDENTIALS }}
+             creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+
+          - name: Upload file to Azure Storage
+            run: |
+                az storage blob upload --account-name sarasstorage --container-name cds --name test.html --file test.html --auth-mode login --overwrite
+  
